@@ -43,7 +43,25 @@ launchpad.</p>
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>usage</h2>
 
-<div class="highlight highlight-java"><pre>    <span class="pl-k">new</span> <span class="pl-stj">Launchpad</span>(<span class="pl-s1"><span class="pl-pds">"</span>/dev/midi<span class="pl-pds">"</span></span>);</pre></div>
+<p>You can find a example receiving and sending data in
+<a href="https://github.com/rynr/launchpad/blob/master/src/test/java/org/rjung/utils/launchpad/example/BounceToLaunchpadExample.java">BounceToLaunchpadExample.java</a>
+in the test-directory.</p>
+
+<p>To retrieve messages, implement a
+<a href="https://github.com/rynr/launchpad/blob/master/src/main/java/org/rjung/utils/launchpad/LaunchpadHandler.java">LaunchpadHandler</a>
+and register it to the launchpad instance. The LaunchpadHandler will now be
+called always, when a Command is received.</p>
+
+<div class="highlight highlight-java"><pre>    launchpad<span class="pl-k">.</span>addHandler(<span class="pl-k">new</span> <span class="pl-stj">LaunchpadHandler</span>() {
+        <span class="pl-s">public</span> <span class="pl-st">void</span> <span class="pl-en">recieve</span>(<span class="pl-stj">MidiCommand</span> <span class="pl-v">command</span>) {
+            <span class="pl-stj">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(command);
+        }
+    });</pre></div>
+
+<p>To send Commands, you can use the methods <code>off(x, y)</code> or <code>set(x, y, color)</code>.</p>
+
+<div class="highlight highlight-java"><pre>    launchpad<span class="pl-k">.</span>off(<span class="pl-c1">1</span>, <span class="pl-c1">2</span>);
+    launchpad<span class="pl-k">.</span>set(<span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-stj">Color</span><span class="pl-c1"><span class="pl-k">.</span>RED</span>);</pre></div>
 
 <h2>
 <a id="info" class="anchor" href="#info" aria-hidden="true"><span class="octicon octicon-link"></span></a>Info</h2>
