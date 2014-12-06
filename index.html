@@ -19,7 +19,7 @@
 
         <header>
           <h1>Launchpad</h1>
-          <h2>Library to access a Novation Launchpad in a unix environment</h2>
+          <h2>Library to access a Novation Launchpad in a linux/unix environment</h2>
         </header>
 
         <section id="downloads" class="clearfix">
@@ -35,10 +35,9 @@
 <a id="launchpad" class="anchor" href="#launchpad" aria-hidden="true"><span class="octicon octicon-link"></span></a>launchpad</h1>
 
 <p>This library can be used to access a <a href="http://uk.novationmusic.com/midi-controllers-digital-dj/launchpad">Novation Launchpad</a>
-from a unix machine. To connect, a block-device is used.</p>
+from a linux/unix machine.</p>
 
-<p>Currently the library cannot be used, it will only show the data received by the
-launchpad.</p>
+<p>To connect, a block-device is used.</p>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>usage</h2>
@@ -53,7 +52,7 @@ launchpad.</p>
 
 <p>You can find a example receiving and sending data in
 <a href="https://github.com/rynr/launchpad/blob/master/src/test/java/org/rjung/util/launchpad/example/BounceToLaunchpadExample.java">BounceToLaunchpadExample.java</a>
-in the test-directory.</p>
+in the test-directory. There's another project at <a href="https://github.com/rynr/jenkins-launchpad">https://github.com/rynr/jenkins-launchpad</a>.</p>
 
 <p>To retrieve messages, implement a
 <a href="https://github.com/rynr/launchpad/blob/master/src/main/java/org/rjung/util/launchpad/LaunchpadHandler.java">LaunchpadHandler</a>
@@ -64,7 +63,8 @@ called always, when a Command is received.</p>
     <span class="pl-s">public</span> <span class="pl-st">void</span> <span class="pl-en">recieve</span>(<span class="pl-stj">MidiCommand</span> <span class="pl-v">command</span>) {
         <span class="pl-stj">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(command);
     }
-});</pre></div>
+});
+launchpad<span class="pl-k">.</span>start();</pre></div>
 
 <p>To send Commands, you can use the methods <code>off(x, y)</code> or <code>set(x, y, color)</code>.</p>
 
